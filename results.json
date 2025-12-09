@@ -47,12 +47,19 @@
 
     "10006": [
         {
-            "exam_name": "Test Exam 1",
+            "exam_name": "NEET",
+            "exam_date": "2025-12-09",
+            "math": 15,
+            "physics": 106,
+            "chemistry": 135
+        },
+        {
+            "exam_name": "NEET",
             "exam_date": "2025-12-01",
-            "math": 45,
-            "physics": 44,
-            "chemistry": 46
-        }
+            "math": 37,
+            "physics": 120,
+            "chemistry": 140
+        }     
     ],
     "10007": [
         {
