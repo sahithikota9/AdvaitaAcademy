@@ -89,6 +89,10 @@ def dashboard():
             "notes": e.get("notes", "")
         })
 
+        # Calculate total marks for each exam
+for exam in student_results:
+    exam["total"] = exam["math"] + exam["physics"] + exam["chemistry"]
+
     return render_template("dashboard.html",
                            student=student,
                            exams=processed_exams)

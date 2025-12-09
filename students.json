@@ -1,302 +1,105 @@
-[
-  {
-    "username": "10001",
-    "password": "30001",
-    "name": "Student 1",
-    "roll": "101",
-    "exams": [
-      {
-        "exam": "First Test",
-        "math": 78,
-        "physics": 82,
-        "chemistry": 75,
-        "total": 235
-      }
-    ]
-  },
-  {
-    "username": "10002",
-    "password": "30002",
-    "name": "Student 2",
-    "roll": "102",
-    "exams": [
-      {
-        "exam": "First Test",
-        "math": 85,
-        "physics": 79,
-        "chemistry": 88,
-        "total": 252
-      }
-    ]
-  },
-  {
-    "username": "10003",
-    "password": "30003",
-    "name": "Student 3",
-    "roll": "103",
-    "exams": [
-      {
-        "exam": "First Test",
-        "math": 91,
-        "physics": 87,
-        "chemistry": 90,
-        "total": 268
-      }
-    ]
-  },
-  {
-    "username": "10004",
-    "password": "30004",
-    "name": "Student 4",
-    "roll": "104",
-    "exams": [
-      {
-        "exam": "First Test",
-        "math": 66,
-        "physics": 72,
-        "chemistry": 70,
-        "total": 208
-      }
-    ]
-  },
-  {
-    "username": "10005",
-    "password": "30005",
-    "name": "Student 5",
-    "roll": "105",
-    "exams": [
-      {
-        "exam": "First Test",
-        "math": 74,
-        "physics": 69,
-        "chemistry": 73,
-        "total": 216
-      }
-    ]
-  },
-  {
-    "username": "10006",
-    "password": "30006",
-    "name": "Student 6",
-    "roll": "106",
-    "exams": [
-      {
-        "exam": "First Test",
-        "math": 88,
-        "physics": 84,
-        "chemistry": 82,
-        "total": 254
-      }
-    ]
-  },
-  {
-    "username": "10007",
-    "password": "30007",
-    "name": "Student 7",
-    "roll": "107",
-    "exams": [
-      {
-        "exam": "First Test",
-        "math": 59,
-        "physics": 61,
-        "chemistry": 64,
-        "total": 184
-      }
-    ]
-  },
-  {
-    "username": "10008",
-    "password": "30008",
-    "name": "Student 8",
-    "roll": "108",
-    "exams": [
-      {
-        "exam": "First Test",
-        "math": 92,
-        "physics": 89,
-        "chemistry": 94,
-        "total": 275
-      }
-    ]
-  },
-  {
-    "username": "10009",
-    "password": "30009",
-    "name": "Student 9",
-    "roll": "109",
-    "exams": [
-      {
-        "exam": "First Test",
-        "math": 81,
-        "physics": 76,
-        "chemistry": 80,
-        "total": 237
-      }
-    ]
-  },
-  {
-    "username": "10010",
-    "password": "30010",
-    "name": "Student 10",
-    "roll": "110",
-    "exams": [
-      {
-        "exam": "First Test",
-        "math": 68,
-        "physics": 71,
-        "chemistry": 65,
-        "total": 204
-      }
-    ]
-  },
-  {
-    "username": "10011",
-    "password": "30011",
-    "name": "Student 11",
-    "roll": "111",
-    "exams": [
-      {
-        "exam": "First Test",
-        "math": 87,
-        "physics": 90,
-        "chemistry": 85,
-        "total": 262
-      }
-    ]
-  },
-  {
-    "username": "10012",
-    "password": "30012",
-    "name": "Student 12",
-    "roll": "112",
-    "exams": [
-      {
-        "exam": "First Test",
-        "math": 73,
-        "physics": 68,
-        "chemistry": 71,
-        "total": 212
-      }
-    ]
-  },
-  {
-    "username": "10013",
-    "password": "30013",
-    "name": "Student 13",
-    "roll": "113",
-    "exams": [
-      {
-        "exam": "First Test",
-        "math": 95,
-        "physics": 91,
-        "chemistry": 93,
-        "total": 279
-      }
-    ]
-  },
-  {
-    "username": "10014",
-    "password": "30014",
-    "name": "Student 14",
-    "roll": "114",
-    "exams": [
-      {
-        "exam": "First Test",
-        "math": 77,
-        "physics": 74,
-        "chemistry": 79,
-        "total": 230
-      }
-    ]
-  },
-  {
-    "username": "10015",
-    "password": "30015",
-    "name": "Student 15",
-    "roll": "115",
-    "exams": [
-      {
-        "exam": "First Test",
-        "math": 82,
-        "physics": 85,
-        "chemistry": 78,
-        "total": 245
-      }
-    ]
-  },
-  {
-    "username": "10016",
-    "password": "30016",
-    "name": "Student 16",
-    "roll": "116",
-    "exams": [
-      {
-        "exam": "First Test",
-        "math": 64,
-        "physics": 60,
-        "chemistry": 66,
-        "total": 190
-      }
-    ]
-  },
-  {
-    "username": "10017",
-    "password": "30017",
-    "name": "Student 17",
-    "roll": "117",
-    "exams": [
-      {
-        "exam": "First Test",
-        "math": 89,
-        "physics": 92,
-        "chemistry": 90,
-        "total": 271
-      }
-    ]
-  },
-  {
-    "username": "10018",
-    "password": "30018",
-    "name": "Student 18",
-    "roll": "118",
-    "exams": [
-      {
-        "exam": "First Test",
-        "math": 70,
-        "physics": 67,
-        "chemistry": 72,
-        "total": 209
-      }
-    ]
-  },
-  {
-    "username": "10019",
-    "password": "30019",
-    "name": "Student 19",
-    "roll": "119",
-    "exams": [
-      {
-        "exam": "First Test",
-        "math": 84,
-        "physics": 82,
-        "chemistry": 88,
-        "total": 254
-      }
-    ]
-  },
-  {
-    "username": "10020",
-    "password": "30020",
-    "name": "Student 20",
-    "roll": "120",
-    "exams": [
-      {
-        "exam": "First Test",
-        "math": 79,
-        "physics": 75,
-        "chemistry": 77,
-        "total": 231
-      }
-    ]
-  }
-]
+{
+    "10001": {
+        "password": "30001",
+        "name": "Student 1",
+        "roll": "1"
+    },
+    "10002": {
+        "password": "30002",
+        "name": "Student 2",
+        "roll": "2"
+    },
+    "10003": {
+        "password": "30003",
+        "name": "Student 3",
+        "roll": "3"
+    },
+    "10004": {
+        "password": "30004",
+        "name": "Student 4",
+        "roll": "4"
+    },
+    "10005": {
+        "password": "30005",
+        "name": "Student 5",
+        "roll": "5"
+    },
+
+    "10006": {
+        "password": "30006",
+        "name": "Student 6",
+        "roll": "6"
+    },
+    "10007": {
+        "password": "30007",
+        "name": "Student 7",
+        "roll": "7"
+    },
+    "10008": {
+        "password": "30008",
+        "name": "Student 8",
+        "roll": "8"
+    },
+    "10009": {
+        "password": "30009",
+        "name": "Student 9",
+        "roll": "9"
+    },
+    "10010": {
+        "password": "30010",
+        "name": "Student 10",
+        "roll": "10"
+    },
+
+    "10011": {
+        "password": "30011",
+        "name": "Student 11",
+        "roll": "11"
+    },
+    "10012": {
+        "password": "30012",
+        "name": "Student 12",
+        "roll": "12"
+    },
+    "10013": {
+        "password": "30013",
+        "name": "Student 13",
+        "roll": "13"
+    },
+    "10014": {
+        "password": "30014",
+        "name": "Student 14",
+        "roll": "14"
+    },
+    "10015": {
+        "password": "30015",
+        "name": "Student 15",
+        "roll": "15"
+    },
+
+    "10016": {
+        "password": "30016",
+        "name": "Student 16",
+        "roll": "16"
+    },
+    "10017": {
+        "password": "30017",
+        "name": "Student 17",
+        "roll": "17"
+    },
+    "10018": {
+        "password": "30018",
+        "name": "Student 18",
+        "roll": "18"
+    },
+    "10019": {
+        "password": "30019",
+        "name": "Student 19",
+        "roll": "19"
+    },
+    "10020": {
+        "password": "30020",
+        "name": "Student 20",
+        "roll": "20"
+    }
+}
