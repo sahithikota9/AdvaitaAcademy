@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Advaita Academy Results Portal - Login</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="container">
+    <h1>Advaita Academy Results Portal</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash">
+        {% for category, msg in messages %}
+          <div class="msg {{ category }}">{{ msg }}</div>
+        {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="post" class="card">
+      <label>Username (5 digits)
+        <input name="username" required pattern="\d{5}" maxlength="5" placeholder="e.g. 10483">
+      </label>
+      <label>Password (5 digits)
+        <input name="password" type="password" required pattern="\d{5}" maxlength="5" placeholder="e.g. 90215">
+      </label>
+      <div class="actions">
+        <button type="submit">Login</button>
+      </div>
+    </form>
+
+    <p class="hint">If you are an admin and need to update marks, edit <code>students.json</code> in the repo.</p>
+  </main>
+</body>
+</html>

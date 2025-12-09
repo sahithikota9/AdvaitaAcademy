@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard - Advaita Academy Results Portal</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Advaita Academy Results Portal</h1>
+      <div class="user">
+        <strong>{{ student.name }}</strong> — Roll: {{ student.roll }} — Username: {{ student.username }}
+        <a class="logout" href="{{ url_for('logout') }}">Logout</a>
+      </div>
+    </header>
+
+    <section class="card">
+      {% if exams %}
+        <h2>Exam History (newest first)</h2>
+        {% for e in exams %}
+          <div class="exam">
+            <h3>{{ e.exam_name }}</h3>
+            <table>
+              <tr><th>Subject</th><th>Marks</th></tr>
+              <tr><td>Math</td><td>{{ e.math if e.math is not none else '—' }}</td></tr>
+              <tr><td>Physics</td><td>{{ e.physics if e.physics is not none else '—' }}</td></tr>
+              <tr><td>Chemistry</td><td>{{ e.chemistry if e.chemistry is not none else '—' }}</td></tr>
+              <tr class="total"><td>Total</td><td>{{ e.total if e.total is not none else '—' }}</td></tr>
+              <tr class="percent"><td>Percentage</td><td>{{ e.percentage if e.percentage is not none else '—' }}{% if e.percentage is not none %}%{% endif %}</td></tr>
+            </table>
+            {% if e.notes %}
+              <p class="notes"><strong>Notes:</strong> {{ e.notes }}</p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% else %}
+        <p>No exams found for your account yet.</p>
+      {% endif %}
+    </section>
+
+    <footer class="small">Advaita Academy — Results Portal</footer>
+  </main>
+</body>
+</html>
