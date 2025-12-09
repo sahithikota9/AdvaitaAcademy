@@ -1,0 +1,185 @@
+{
+    "10001": [
+        {
+            "exam_name": "Test Exam 1",
+            "exam_date": "2025-12-01",
+            "math": 50,
+            "physics": 45,
+            "chemistry": 40
+        }
+    ],
+    "10002": [
+        {
+            "exam_name": "Test Exam 1",
+            "exam_date": "2025-12-01",
+            "math": 48,
+            "physics": 44,
+            "chemistry": 39
+        }
+    ],
+    "10003": [
+        {
+            "exam_name": "Test Exam 1",
+            "exam_date": "2025-12-01",
+            "math": 47,
+            "physics": 42,
+            "chemistry": 41
+        }
+    ],
+    "10004": [
+        {
+            "exam_name": "Test Exam 1",
+            "exam_date": "2025-12-01",
+            "math": 52,
+            "physics": 40,
+            "chemistry": 43
+        }
+    ],
+    "10005": [
+        {
+            "exam_name": "Test Exam 1",
+            "exam_date": "2025-12-01",
+            "math": 38,
+            "physics": 41,
+            "chemistry": 39
+        }
+    ],
+
+    "10006": [
+        {
+            "exam_name": "Test Exam 1",
+            "exam_date": "2025-12-01",
+            "math": 45,
+            "physics": 44,
+            "chemistry": 46
+        }
+    ],
+    "10007": [
+        {
+            "exam_name": "Test Exam 1",
+            "exam_date": "2025-12-01",
+            "math": 40,
+            "physics": 39,
+            "chemistry": 45
+        }
+    ],
+    "10008": [
+        {
+            "exam_name": "Test Exam 1",
+            "exam_date": "2025-12-01",
+            "math": 51,
+            "physics": 50,
+            "chemistry": 49
+        }
+    ],
+    "10009": [
+        {
+            "exam_name": "Test Exam 1",
+            "exam_date": "2025-12-01",
+            "math": 49,
+            "physics": 41,
+            "chemistry": 40
+        }
+    ],
+    "10010": [
+        {
+            "exam_name": "Test Exam 1",
+            "exam_date": "2025-12-01",
+            "math": 42,
+            "physics": 46,
+            "chemistry": 44
+        }
+    ],
+
+    "10011": [
+        {
+            "exam_name": "Test Exam 1",
+            "exam_date": "2025-12-01",
+            "math": 37,
+            "physics": 40,
+            "chemistry": 38
+        }
+    ],
+    "10012": [
+        {
+            "exam_name": "Test Exam 1",
+            "exam_date": "2025-12-01",
+            "math": 55,
+            "physics": 52,
+            "chemistry": 50
+        }
+    ],
+    "10013": [
+        {
+            "exam_name": "Test Exam 1",
+            "exam_date": "2025-12-01",
+            "math": 48,
+            "physics": 44,
+            "chemistry": 42
+        }
+    ],
+    "10014": [
+        {
+            "exam_name": "Test Exam 1",
+            "exam_date": "2025-12-01",
+            "math": 41,
+            "physics": 43,
+            "chemistry": 40
+        }
+    ],
+    "10015": [
+        {
+            "exam_name": "Test Exam 1",
+            "exam_date": "2025-12-01",
+            "math": 39,
+            "physics": 42,
+            "chemistry": 41
+        }
+    ],
+
+    "10016": [
+        {
+            "exam_name": "Test Exam 1",
+            "exam_date": "2025-12-01",
+            "math": 51,
+            "physics": 48,
+            "chemistry": 47
+        }
+    ],
+    "10017": [
+        {
+            "exam_name": "Test Exam 1",
+            "exam_date": "2025-12-01",
+            "math": 43,
+            "physics": 44,
+            "chemistry": 45
+        }
+    ],
+    "10018": [
+        {
+            "exam_name": "Test Exam 1",
+            "exam_date": "2025-12-01",
+            "math": 46,
+            "physics": 42,
+            "chemistry": 43
+        }
+    ],
+    "10019": [
+        {
+            "exam_name": "Test Exam 1",
+            "exam_date": "2025-12-01",
+            "math": 40,
+            "physics": 38,
+            "chemistry": 41
+        }
+    ],
+    "10020": [
+        {
+            "exam_name": "Test Exam 1",
+            "exam_date": "2025-12-01",
+            "math": 49,
+            "physics": 47,
+            "chemistry": 46
+        }
+    ]
+}
