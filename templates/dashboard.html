@@ -1,69 +1,142 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Advaita Academy Results Portal</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            margin: 0;
-            padding: 0;
+            background: #f7f7f7;
+            padding: 20px;
         }
         .container {
-            width: 90%;
-            max-width: 600px;
+            max-width: 900px;
+            margin: auto;
             background: white;
             padding: 20px;
-            margin: 40px auto;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px #ccc;
         }
         h2 {
             text-align: center;
         }
         .exam-block {
-            background: #fafafa;
+            border: 1px solid #ddd;
             padding: 15px;
             margin-top: 20px;
-            border-left: 5px solid #4CAF50;
-            border-radius: 6px;
+            border-radius: 8px;
+            background: #fafafa;
         }
-        .logout {
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #aaa;
+            padding: 8px;
             text-align: center;
-            margin-top: 20px;
         }
-        .logout a {
-            text-decoration: none;
-            background: red;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 5px;
+        th {
+            background: #eee;
+        }
+        canvas {
+            margin-top: 20px;
         }
     </style>
 </head>
+
 <body>
+
 <div class="container">
-    <h2>Welcome, {{ student.name }}</h2>
-    <p><strong>Roll Number:</strong> {{ student.roll }}</p>
+    <h2>Advaita Academy Results Portal</h2>
+    <h3>Welcome, {{ student.name }} (Roll: {{ student.roll }})</h3>
 
-    <h3>Your Exam Results</h3>
+    <!-- Exam progression chart -->
+    <h3 style="text-align:center;">Exam Performance Over Time</h3>
+    <canvas id="progressChart"></canvas>
 
+    <script>
+        const examLabels = [
+            {% for exam in results %}
+                "{{ exam.exam_name }} ({{ exam.date }})",
+            {% endfor %}
+        ];
+
+        const totalScores = [
+            {% for exam in results %}
+                {{ exam.total }},
+            {% endfor %}
+        ];
+
+        new Chart(document.getElementById('progressChart'), {
+            type: 'bar',
+            data: {
+                labels: examLabels,
+                datasets: [{
+                    label: "Total Score",
+                    data: totalScores,
+                    backgroundColor: "violet"
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+    </script>
+
+    <hr>
+
+    <!-- Individual exam blocks -->
     {% for exam in results %}
     <div class="exam-block">
+
         <h3>{{ exam.exam_name }}</h3>
         <p><strong>Date:</strong> {{ exam.date }}</p>
 
-        <p><strong>Math:</strong> {{ exam.math }}</p>
-        <p><strong>Physics:</strong> {{ exam.physics }}</p>
-        <p><strong>Chemistry:</strong> {{ exam.chemistry }}</p>
+        <canvas id="chart{{ loop.index }}"></canvas>
 
-        <p><strong>Total:</strong> {{ exam.total }}</p>
+        <table>
+            <tr>
+                <th>Subject</th>
+                <th>Marks</th>
+            </tr>
+            <tr><td>Math</td><td>{{ exam.math }}</td></tr>
+            <tr><td>Physics</td><td>{{ exam.physics }}</td></tr>
+            <tr><td>Chemistry</td><td>{{ exam.chemistry }}</td></tr>
+            <tr><th>Total</th><th>{{ exam.total }}</th></tr>
+        </table>
+
+        <script>
+            new Chart(document.getElementById("chart{{ loop.index }}"), {
+                type: 'bar',
+                data: {
+                    labels: ["Math", "Physics", "Chemistry", "Total"],
+                    datasets: [{
+                        label: "{{ exam.exam_name }}",
+                        data: [{{ exam.math }}, {{ exam.physics }}, {{ exam.chemistry }}, {{ exam.total }}],
+                        backgroundColor: ["pink", "blue", "yellow", "green"]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+        </script>
+
     </div>
     {% endfor %}
-
-    <div class="logout">
-        <a href="/logout">Logout</a>
-    </div>
 </div>
+
 </body>
 </html>
