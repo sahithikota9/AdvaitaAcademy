@@ -1,192 +1,82 @@
 {
-    "10001": [
-        {
-            "exam_name": "Test Exam 1",
-            "exam_date": "2025-12-01",
-            "math": 50,
-            "physics": 45,
-            "chemistry": 40
-        }
-    ],
-    "10002": [
-        {
-            "exam_name": "Test Exam 1",
-            "exam_date": "2025-12-01",
-            "math": 48,
-            "physics": 44,
-            "chemistry": 39
-        }
-    ],
-    "10003": [
-        {
-            "exam_name": "Test Exam 1",
-            "exam_date": "2025-12-01",
-            "math": 47,
-            "physics": 42,
-            "chemistry": 41
-        }
-    ],
-    "10004": [
-        {
-            "exam_name": "Test Exam 1",
-            "exam_date": "2025-12-01",
-            "math": 52,
-            "physics": 40,
-            "chemistry": 43
-        }
-    ],
-    "10005": [
-        {
-            "exam_name": "Test Exam 1",
-            "exam_date": "2025-12-01",
-            "math": 38,
-            "physics": 41,
-            "chemistry": 39
-        }
-    ],
-
-    "10006": [
-        {
-            "exam_name": "NEET",
-            "exam_date": "2025-12-09",
-            "math": 15,
-            "physics": 106,
-            "chemistry": 135
-        },
-        {
-            "exam_name": "NEET",
-            "exam_date": "2025-12-01",
-            "math": 37,
-            "physics": 120,
-            "chemistry": 140
-        }     
-    ],
-    "10007": [
-        {
-            "exam_name": "Test Exam 1",
-            "exam_date": "2025-12-01",
-            "math": 40,
-            "physics": 39,
-            "chemistry": 45
-        }
-    ],
-    "10008": [
-        {
-            "exam_name": "Test Exam 1",
-            "exam_date": "2025-12-01",
-            "math": 51,
-            "physics": 50,
-            "chemistry": 49
-        }
-    ],
-    "10009": [
-        {
-            "exam_name": "Test Exam 1",
-            "exam_date": "2025-12-01",
-            "math": 49,
-            "physics": 41,
-            "chemistry": 40
-        }
-    ],
-    "10010": [
-        {
-            "exam_name": "Test Exam 1",
-            "exam_date": "2025-12-01",
-            "math": 42,
-            "physics": 46,
-            "chemistry": 44
-        }
-    ],
-
-    "10011": [
-        {
-            "exam_name": "Test Exam 1",
-            "exam_date": "2025-12-01",
-            "math": 37,
-            "physics": 40,
-            "chemistry": 38
-        }
-    ],
-    "10012": [
-        {
-            "exam_name": "Test Exam 1",
-            "exam_date": "2025-12-01",
-            "math": 55,
-            "physics": 52,
-            "chemistry": 50
-        }
-    ],
-    "10013": [
-        {
-            "exam_name": "Test Exam 1",
-            "exam_date": "2025-12-01",
-            "math": 48,
-            "physics": 44,
-            "chemistry": 42
-        }
-    ],
-    "10014": [
-        {
-            "exam_name": "Test Exam 1",
-            "exam_date": "2025-12-01",
-            "math": 41,
-            "physics": 43,
-            "chemistry": 40
-        }
-    ],
-    "10015": [
-        {
-            "exam_name": "Test Exam 1",
-            "exam_date": "2025-12-01",
-            "math": 39,
-            "physics": 42,
-            "chemistry": 41
-        }
-    ],
-
-    "10016": [
-        {
-            "exam_name": "Test Exam 1",
-            "exam_date": "2025-12-01",
-            "math": 51,
-            "physics": 48,
-            "chemistry": 47
-        }
-    ],
-    "10017": [
-        {
-            "exam_name": "Test Exam 1",
-            "exam_date": "2025-12-01",
-            "math": 43,
-            "physics": 44,
-            "chemistry": 45
-        }
-    ],
-    "10018": [
-        {
-            "exam_name": "Test Exam 1",
-            "exam_date": "2025-12-01",
-            "math": 46,
-            "physics": 42,
-            "chemistry": 43
-        }
-    ],
-    "10019": [
-        {
-            "exam_name": "Test Exam 1",
-            "exam_date": "2025-12-01",
-            "math": 40,
-            "physics": 38,
-            "chemistry": 41
-        }
-    ],
-    "10020": [
-        {
-            "exam_name": "Test Exam 1",
-            "exam_date": "2025-12-01",
-            "math": 49,
-            "physics": 47,
-            "chemistry": 46
-        }
-    ]
+  "10001": [
+    { "exam": "JEE Mock Test 1", "math": 78, "physics": 84, "chemistry": 90 },
+    { "exam": "JEE Mock Test 2", "math": 81, "physics": 87, "chemistry": 88 }
+  ],
+  "10002": [
+    { "exam": "JEE Mock Test 1", "math": 65, "physics": 70, "chemistry": 74 },
+    { "exam": "JEE Mock Test 2", "math": 72, "physics": 68, "chemistry": 75 }
+  ],
+  "10003": [
+    { "exam": "JEE Mock Test 1", "math": 90, "physics": 93, "chemistry": 91 },
+    { "exam": "JEE Mock Test 2", "math": 88, "physics": 91, "chemistry": 95 }
+  ],
+  "10004": [
+    { "exam": "JEE Mock Test 1", "math": 55, "physics": 60, "chemistry": 58 },
+    { "exam": "JEE Mock Test 2", "math": 61, "physics": 63, "chemistry": 66 }
+  ],
+  "10005": [
+    { "exam": "JEE Mock Test 1", "math": 79, "physics": 83, "chemistry": 81 },
+    { "exam": "JEE Mock Test 2", "math": 82, "physics": 85, "chemistry": 87 }
+  ],
+  "10006": [
+    { "exam": "NEET - Dec 3, 2025", "math": 8, "physics": 124, "chemistry": 120 },
+    { "exam": "NEET - Dec 10, 2025", "math": 24, "physics": 146, "chemistry": 163 }
+  ],
+  "10007": [
+    { "exam": "JEE Mock Test 1", "math": 88, "physics": 86, "chemistry": 84 },
+    { "exam": "JEE Mock Test 2", "math": 91, "physics": 89, "chemistry": 87 }
+  ],
+  "10008": [
+    { "exam": "JEE Mock Test 1", "math": 72, "physics": 69, "chemistry": 74 },
+    { "exam": "JEE Mock Test 2", "math": 76, "physics": 72, "chemistry": 79 }
+  ],
+  "10009": [
+    { "exam": "JEE Mock Test 1", "math": 66, "physics": 71, "chemistry": 73 },
+    { "exam": "JEE Mock Test 2", "math": 69, "physics": 74, "chemistry": 76 }
+  ],
+  "10010": [
+    { "exam": "JEE Mock Test 1", "math": 81, "physics": 79, "chemistry": 82 },
+    { "exam": "JEE Mock Test 2", "math": 84, "physics": 82, "chemistry": 85 }
+  ],
+  "10011": [
+    { "exam": "JEE Mock Test 1", "math": 92, "physics": 94, "chemistry": 91 },
+    { "exam": "JEE Mock Test 2", "math": 89, "physics": 92, "chemistry": 94 }
+  ],
+  "10012": [
+    { "exam": "JEE Mock Test 1", "math": 60, "physics": 63, "chemistry": 67 },
+    { "exam": "JEE Mock Test 2", "math": 66, "physics": 69, "chemistry": 72 }
+  ],
+  "10013": [
+    { "exam": "JEE Mock Test 1", "math": 73, "physics": 77, "chemistry": 80 },
+    { "exam": "JEE Mock Test 2", "math": 78, "physics": 81, "chemistry": 83 }
+  ],
+  "10014": [
+    { "exam": "JEE Mock Test 1", "math": 88, "physics": 90, "chemistry": 87 },
+    { "exam": "JEE Mock Test 2", "math": 91, "physics": 93, "chemistry": 90 }
+  ],
+  "10015": [
+    { "exam": "JEE Mock Test 1", "math": 84, "physics": 82, "chemistry": 88 },
+    { "exam": "JEE Mock Test 2", "math": 87, "physics": 85, "chemistry": 89 }
+  ],
+  "10016": [
+    { "exam": "JEE Mock Test 1", "math": 70, "physics": 72, "chemistry": 74 },
+    { "exam": "JEE Mock Test 2", "math": 74, "physics": 76, "chemistry": 79 }
+  ],
+  "10017": [
+    { "exam": "JEE Mock Test 1", "math": 91, "physics": 88, "chemistry": 90 },
+    { "exam": "JEE Mock Test 2", "math": 93, "physics": 90, "chemistry": 92 }
+  ],
+  "10018": [
+    { "exam": "JEE Mock Test 1", "math": 67, "physics": 69, "chemistry": 71 },
+    { "exam": "JEE Mock Test 2", "math": 72, "physics": 74, "chemistry": 77 }
+  ],
+  "10019": [
+    { "exam": "JEE Mock Test 1", "math": 74, "physics": 76, "chemistry": 78 },
+    { "exam": "JEE Mock Test 2", "math": 78, "physics": 80, "chemistry": 82 }
+  ],
+  "10020": [
+    { "exam": "JEE Mock Test 1", "math": 83, "physics": 85, "chemistry": 87 },
+    { "exam": "JEE Mock Test 2", "math": 86, "physics": 88, "chemistry": 90 }
+  ]
 }

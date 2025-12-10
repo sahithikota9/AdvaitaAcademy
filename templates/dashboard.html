@@ -3,140 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advaita Academy Results Portal</title>
+    <title>Student Dashboard</title>
 
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #f7f7f7;
-            padding: 20px;
+            background: #f2f2f7;
+            margin: 0;
+            padding: 0;
         }
+
         .container {
+            width: 92%;
             max-width: 900px;
             margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px #ccc;
+            padding-top: 25px;
         }
-        h2 {
+
+        .welcome {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 20px;
             text-align: center;
         }
-        .exam-block {
-            border: 1px solid #ddd;
-            padding: 15px;
-            margin-top: 20px;
-            border-radius: 8px;
-            background: #fafafa;
+
+        /* Card for charts */
+        .chart-card {
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
         }
+
+        /* Card for each exam result */
+        .exam-table {
+            background: white;
+            padding: 20px;
+            border-radius: 14px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+        }
+
+        .exam-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #4a4a4a;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
+            font-size: 15px;
         }
+
         th, td {
-            border: 1px solid #aaa;
-            padding: 8px;
-            text-align: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
         }
+
         th {
-            background: #eee;
+            background: #fafafa;
+            border-radius: 8px;
         }
-        canvas {
-            margin-top: 20px;
+
+        .total-row {
+            font-weight: bold;
+            background: #f7f0ff;
+            border-radius: 6px;
+        }
+
+        .logout {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .logout a {
+            color: #444;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .logout a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
-
 <body>
 
 <div class="container">
-    <h2>Advaita Academy Results Portal</h2>
-    <h3>Welcome, {{ student.name }} (Roll: {{ student.roll }})</h3>
 
-    <!-- Exam progression chart -->
-    <h3 style="text-align:center;">Exam Performance Over Time</h3>
-    <canvas id="progressChart"></canvas>
+    <div class="welcome">Welcome, {{ name }} (Roll: {{ roll }})</div>
 
-    <script>
-        const examLabels = [
-            {% for exam in results %}
-                "{{ exam.exam_name }} ({{ exam.date }})",
-            {% endfor %}
-        ];
+    <!-- Line Chart -->
+    <div class="chart-card">
+        <h3 style="text-align:center; margin-bottom:15px;">Performance Progress</h3>
+        <canvas id="progressChart"></canvas>
+    </div>
 
-        const totalScores = [
-            {% for exam in results %}
-                {{ exam.total }},
-            {% endfor %}
-        ];
-
-        new Chart(document.getElementById('progressChart'), {
-            type: 'bar',
-            data: {
-                labels: examLabels,
-                datasets: [{
-                    label: "Total Score",
-                    data: totalScores,
-                    backgroundColor: "violet"
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: { beginAtZero: true }
-                }
-            }
-        });
-    </script>
-
-    <hr>
-
-    <!-- Individual exam blocks -->
+    <!-- Exam Tables -->
     {% for exam in results %}
-    <div class="exam-block">
-
-        <h3>{{ exam.exam_name }}</h3>
-        <p><strong>Date:</strong> {{ exam.date }}</p>
-
-        <canvas id="chart{{ loop.index }}"></canvas>
+    <div class="exam-table">
+        <div class="exam-title">{{ exam["exam"] }}</div>
 
         <table>
             <tr>
                 <th>Subject</th>
                 <th>Marks</th>
             </tr>
-            <tr><td>Math</td><td>{{ exam.math }}</td></tr>
-            <tr><td>Physics</td><td>{{ exam.physics }}</td></tr>
-            <tr><td>Chemistry</td><td>{{ exam.chemistry }}</td></tr>
-            <tr><th>Total</th><th>{{ exam.total }}</th></tr>
+
+            <tr><td>Math</td><td>{{ exam["math"] }}</td></tr>
+            <tr><td>Physics</td><td>{{ exam["physics"] }}</td></tr>
+            <tr><td>Chemistry</td><td>{{ exam["chemistry"] }}</td></tr>
+
+            <tr class="total-row">
+                <td>Total</td>
+                <td>{{ exam["total"] }}</td>
+            </tr>
         </table>
-
-        <script>
-            new Chart(document.getElementById("chart{{ loop.index }}"), {
-                type: 'bar',
-                data: {
-                    labels: ["Math", "Physics", "Chemistry", "Total"],
-                    datasets: [{
-                        label: "{{ exam.exam_name }}",
-                        data: [{{ exam.math }}, {{ exam.physics }}, {{ exam.chemistry }}, {{ exam.total }}],
-                        backgroundColor: ["pink", "blue", "yellow", "green"]
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        y: { beginAtZero: true }
-                    }
-                }
-            });
-        </script>
-
     </div>
     {% endfor %}
+
+    <div class="logout">
+        <a href="/logout">Logout</a>
+    </div>
+
 </div>
+
+<script>
+    const examNames = {{ exam_names | tojson }};
+    const totals = {{ totals | tojson }};
+
+    const ctx = document.getElementById("progressChart");
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: examNames,
+            datasets: [{
+                label: "Total Marks",
+                data: totals,
+                fill: true,
+                borderColor: "purple",
+                backgroundColor: "rgba(128,0,128,0.2)",
+                tension: 0.4,
+                borderWidth: 3,
+                pointRadius: 4,
+                pointBackgroundColor: "purple"
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+</script>
 
 </body>
 </html>
