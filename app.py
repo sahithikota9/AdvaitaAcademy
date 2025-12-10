@@ -1,13 +1,10 @@
 from flask import Flask, render_template, request, redirect, session
 import json
-import os
 
 app = Flask(__name__)
-app.secret_key = "secret123"   # change later if needed
+app.secret_key = "your_secret_key_here"
 
-
-# --------- LOAD DATA ---------
-
+# --- Load JSON files ---
 def load_students():
     with open("students.json", "r") as f:
         return json.load(f)
@@ -16,69 +13,62 @@ def load_results():
     with open("results.json", "r") as f:
         return json.load(f)
 
+students = load_students()
+results = load_results()
 
-# --------- ROUTES ---------
-
+# ---------------- LOGIN PAGE -----------------
 @app.route("/", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
 
-        students = load_students()
-
-        # Check username exists
         if username in students and students[username]["password"] == password:
             session["username"] = username
             return redirect("/dashboard")
-
-        return render_template("login.html", error="Invalid username or password")
+        else:
+            return render_template("login.html", error="Invalid credentials")
 
     return render_template("login.html")
 
-
+# ---------------- DASHBOARD -----------------
 @app.route("/dashboard")
 def dashboard():
     if "username" not in session:
         return redirect("/")
 
     username = session["username"]
-
-    students = load_students()
-    results = load_results()
-
     student = students[username]
+    exams = results.get(username, [])
 
-    # Get this student's exams
-    exam_list = results.get(username, [])
+    # SORT newest → oldest for display
+    exams_sorted = sorted(exams, key=lambda x: x["exam"], reverse=True)
 
-    # Sort newest → oldest (your requirement)
-    exam_list = list(reversed(exam_list))
+    # For the line chart: oldest → newest
+    exams_old_first = exams_sorted[::-1]
 
-    # Add total marks automatically
-    for exam in exam_list:
-        exam["total"] = exam["math"] + exam["physics"] + exam["chemistry"]
-
-    # Chart data
-    exam_names = [exam["exam"] for exam in exam_list]
-    totals = [exam["total"] for exam in exam_list]
+    exam_names = [e["exam"] for e in exams_old_first]
+    exam_totals = [
+        e["math"] + e["physics"] + e["chemistry"] 
+        for e in exams_old_first
+    ]
 
     return render_template(
         "dashboard.html",
         name=student["name"],
+        username=username,
         roll=student["roll"],
-        results=exam_list,
+        exams=exams_sorted,
         exam_names=exam_names,
-        totals=totals
+        exam_totals=exam_totals
     )
 
-
+# ---------------- LOGOUT -----------------
 @app.route("/logout")
 def logout():
     session.clear()
     return redirect("/")
 
-
-# --------- RUN LOCALLY ---------
+# ---------------- RUN -----------------
 if __name__ == "__main__":
     app.run(debug=True)
