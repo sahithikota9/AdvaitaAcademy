@@ -2,100 +2,112 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ student.name }} - Dashboard</title>
+    <title>Dashboard</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f4f9;
-            display: flex;
+            font-family: "Poppins", sans-serif;
+            background: #f3edff;
         }
 
         /* SIDEBAR */
         .sidebar {
-            width: 230px;
+            width: 250px;
             height: 100vh;
-            background: #2c2f33;
-            color: white;
-            padding: 20px;
-            box-sizing: border-box;
+            background: rgba(120, 70, 200, 0.25);
+            backdrop-filter: blur(14px);
+            border-right: 1px solid rgba(255,255,255,0.25);
             position: fixed;
+            padding: 30px 20px;
+            color: white;
         }
 
         .sidebar h2 {
-            margin-top: 0;
-            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 35px;
         }
 
-        .sidebar a {
-            color: #ccc;
-            text-decoration: none;
-            display: block;
-            margin: 15px 0;
-            font-size: 16px;
+        .profile-box {
+            background: rgba(255,255,255,0.2);
+            padding: 14px;
+            border-radius: 12px;
+            margin-bottom: 40px;
         }
 
-        .sidebar a:hover {
+        .profile-box p {
+            margin: 6px 0;
             color: white;
         }
 
-        /* MAIN AREA */
+        .logout-btn {
+            padding: 8px 15px;
+            background: white;
+            color: #6d0ec7;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        /* MAIN */
         .main {
-            margin-left: 260px;
+            margin-left: 270px;
             padding: 30px;
-            width: calc(100% - 260px);
         }
 
         h1 {
-            margin-top: 0;
-            font-size: 30px;
+            color: #5a00a0;
+            font-weight: 600;
         }
 
-        /* LINE CHART CARD */
-        .chart-card {
+        .chart-box {
             background: white;
-            border-radius: 14px;
             padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+            border-radius: 16px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
         }
 
-        /* EXAM CARDS */
+        /* EXAM CARD */
         .exam-card {
-            background: #ffffff;
-            border-radius: 14px;
+            background: white;
             padding: 20px;
-            margin-bottom: 22px;
-            box-shadow: 0px 0px 8px rgba(0,0,0,0.08);
+            border-radius: 16px;
+            margin-bottom: 35px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 6px solid #9333ea;
         }
 
-        .exam-card h3 {
-            margin-top: 0;
-            font-size: 22px;
-            color: #333;
+        .exam-card h2 {
+            margin: 0 0 15px 0;
+            color: #6d0ec7;
         }
 
-        /* TABLE */
+        /* TABLES */
         table {
             width: 100%;
-            border-collapse: collapse;
-            margin-top: 12px;
-            background: #fafafa;
+            background: #f5e8ff;
             border-radius: 10px;
             overflow: hidden;
-        }
-
-        th, td {
-            padding: 14px;
-            text-align: left;
-            border-bottom: 1px solid #e4e4e4;
-            font-size: 15px;
+            border-collapse: collapse;
         }
 
         th {
-            background: #eaeaea;
+            background: #e6d0ff;
+            padding: 12px;
+            text-align: left;
+            color: #5a00a0;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e5ccff;
         }
 
         tr:last-child td {
@@ -108,71 +120,92 @@
 
     <!-- SIDEBAR -->
     <div class="sidebar">
-        <h2>Student Panel</h2>
-        <p><strong>{{ student.name }}</strong></p>
-        <p>Roll: {{ student.roll }}</p>
+        <h2>Dashboard</h2>
 
-        <a href="/">Logout</a>
+        <div class="profile-box">
+            <p><b>Name:</b> {{ name }}</p>
+            <p><b>Username:</b> {{ username }}</p>
+            <p><b>Roll No:</b> {{ roll }}</p>
+        </div>
+
+        <a class="logout-btn" href="/logout">Logout</a>
     </div>
 
-    <!-- MAIN -->
+    <!-- MAIN AREA -->
     <div class="main">
+        <h1>Your Performance</h1>
 
-        <h1>{{ student.name }}'s Dashboard</h1>
-
-        <!-- LINE GRAPH -->
-        <div class="chart-card">
+        <!-- LINE CHART: oldest → newest -->
+        <div class="chart-box">
+            <h2 style="color:#6d0ec7;">Performance Trend</h2>
             <canvas id="progressChart"></canvas>
         </div>
 
-        <script>
-            const ctx = document.getElementById("progressChart");
-
-            new Chart(ctx, {
-                type: "line",
-                data: {
-                    labels: {{ graph_labels | tojson }},
-                    datasets: [{
-                        label: "Total Marks Progression",
-                        data: {{ graph_totals | tojson }},
-                        borderColor: "purple",
-                        backgroundColor: "rgba(128,0,128,0.15)",
-                        borderWidth: 2,
-                        fill: true,
-                        tension: 0.35
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: { beginAtZero: true }
-                    }
-                }
-            });
-        </script>
-
-        <!-- EXAM RESULTS (newest first) -->
+        <!-- EXAM CARDS -->
         {% for exam in exams %}
         <div class="exam-card">
-            <h3>{{ exam.exam }}</h3>
+            <h2>{{ exam.exam }}</h2>
+
+            <div style="width:380px; margin-bottom:15px;">
+                <canvas id="chart_{{ loop.index }}"></canvas>
+            </div>
 
             <table>
                 <tr>
-                    <th>Math</th>
-                    <th>Physics</th>
-                    <th>Chemistry</th>
-                    <th>Total</th>
+                    <th>Subject</th>
+                    <th>Marks</th>
                 </tr>
-                <tr>
-                    <td>{{ exam.math }}</td>
-                    <td>{{ exam.physics }}</td>
-                    <td>{{ exam.chemistry }}</td>
-                    <td><strong>{{ exam.total }}</strong></td>
-                </tr>
+                <tr><td>Math</td><td>{{ exam.math }}</td></tr>
+                <tr><td>Physics</td><td>{{ exam.physics }}</td></tr>
+                <tr><td>Chemistry</td><td>{{ exam.chemistry }}</td></tr>
             </table>
         </div>
         {% endfor %}
-
     </div>
+
+    <!-- CHART LOGIC -->
+    <script>
+        // LINE CHART — oldest → newest
+        const examLabels = {{ exam_names|tojson }};
+        const totals = {{ exam_totals|tojson }};
+
+        new Chart(document.getElementById("progressChart"), {
+            type: "line",
+            data: {
+                labels: examLabels,
+                datasets: [{
+                    label: "Total Score",
+                    data: totals,
+                    borderColor: "#7c2ae8",
+                    backgroundColor: "rgba(126, 34, 206, 0.25)",
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.35
+                }]
+            },
+            options: {
+                scales: { y: { beginAtZero: true, max: 300 } }
+            }
+        });
+
+        // SUBJECT BAR CHARTS
+        {% for exam in exams %}
+        new Chart(document.getElementById("chart_{{ loop.index }}"), {
+            type: "bar",
+            data: {
+                labels: ["Math", "Physics", "Chemistry"],
+                datasets: [{
+                    label: "Marks",
+                    data: [{{ exam.math }}, {{ exam.physics }}, {{ exam.chemistry }}],
+                    backgroundColor: ["#f472b6", "#60a5fa", "#facc15"]
+                }]
+            },
+            options: {
+                scales: { y: { beginAtZero: true, max: 120 } }
+            }
+        });
+        {% endfor %}
+    </script>
 
 </body>
 </html>

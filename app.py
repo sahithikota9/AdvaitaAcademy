@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 import json
+import re
 
 app = Flask(__name__)
 
@@ -14,6 +15,19 @@ with open("students.json", "r") as f:
 # ---------------------------
 with open("results.json", "r") as f:
     results = json.load(f)
+
+
+# ---------------------------
+# Helper: extract exam number
+# ---------------------------
+def get_exam_number(exam_name):
+    """
+    Extracts the exam number from strings like:
+    'JEE Mock Test 1'
+    'JEE Mock Test 12'
+    """
+    num = re.findall(r"\d+", exam_name)
+    return int(num[-1]) if num else 0
 
 
 # ---------------------------
@@ -45,9 +59,9 @@ def dashboard(username):
     for exam in exam_list:
         exam["total"] = exam["math"] + exam["physics"] + exam["chemistry"]
 
-    # ---- Sorting ----
-    exams_for_graph = sorted(exam_list, key=lambda x: x["exam"])                  # oldest → newest
-    exams_for_display = sorted(exam_list, key=lambda x: x["exam"], reverse=True) # newest → oldest
+    # ---- Sorting using extracted exam number ----
+    exams_for_graph = sorted(exam_list, key=lambda x: get_exam_number(x["exam"]))
+    exams_for_display = sorted(exam_list, key=lambda x: get_exam_number(x["exam"]), reverse=True)
 
     graph_labels = [e["exam"] for e in exams_for_graph]
     graph_totals = [e["total"] for e in exams_for_graph]
