@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Dashboard</title>
 
-    <!-- Fonts -->
+    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
     <!-- Chart.js -->
@@ -66,6 +66,7 @@
             font-weight: 600;
         }
 
+        /* CHART CONTAINER */
         .chart-box {
             background: white;
             padding: 25px;
@@ -89,7 +90,7 @@
             color: #6d0ec7;
         }
 
-        /* TABLES */
+        /* TABLE */
         table {
             width: 100%;
             background: #f5e8ff;
@@ -131,17 +132,18 @@
         <a class="logout-btn" href="/logout">Logout</a>
     </div>
 
-    <!-- MAIN AREA -->
+    <!-- MAIN CONTENT -->
     <div class="main">
+
         <h1>Your Performance</h1>
 
-        <!-- LINE CHART: oldest → newest -->
+        <!-- LINE GRAPH (oldest → newest) -->
         <div class="chart-box">
             <h2 style="color:#6d0ec7;">Performance Trend</h2>
             <canvas id="progressChart"></canvas>
         </div>
 
-        <!-- EXAM CARDS -->
+        <!-- EXAM CARDS (newest → oldest) -->
         {% for exam in exams %}
         <div class="exam-card">
             <h2>{{ exam.exam }}</h2>
@@ -158,21 +160,27 @@
                 <tr><td>Math</td><td>{{ exam.math }}</td></tr>
                 <tr><td>Physics</td><td>{{ exam.physics }}</td></tr>
                 <tr><td>Chemistry</td><td>{{ exam.chemistry }}</td></tr>
+
+                <!-- TOTAL ROW (NEWLY ADDED) -->
+                <tr>
+                    <td><b>Total</b></td>
+                    <td><b>{{ exam.total }}</b></td>
+                </tr>
             </table>
         </div>
         {% endfor %}
     </div>
 
-    <!-- CHART LOGIC -->
+    <!-- CHART SCRIPT -->
     <script>
         // LINE CHART — oldest → newest
-        const examLabels = {{ exam_names|tojson }};
+        const labels = {{ exam_names|tojson }};
         const totals = {{ exam_totals|tojson }};
 
         new Chart(document.getElementById("progressChart"), {
             type: "line",
             data: {
-                labels: examLabels,
+                labels: labels,
                 datasets: [{
                     label: "Total Score",
                     data: totals,
@@ -184,11 +192,13 @@
                 }]
             },
             options: {
-                scales: { y: { beginAtZero: true, max: 300 } }
+                scales: {
+                    y: { beginAtZero: true, max: 300 }
+                }
             }
         });
 
-        // SUBJECT BAR CHARTS
+        // BAR CHARTS FOR EACH EXAM
         {% for exam in exams %}
         new Chart(document.getElementById("chart_{{ loop.index }}"), {
             type: "bar",
@@ -197,11 +207,12 @@
                 datasets: [{
                     label: "Marks",
                     data: [{{ exam.math }}, {{ exam.physics }}, {{ exam.chemistry }}],
-                    backgroundColor: ["#f472b6", "#60a5fa", "#facc15"]
                 }]
             },
             options: {
-                scales: { y: { beginAtZero: true, max: 120 } }
+                scales: {
+                    y: { beginAtZero: true, max: 120 }
+                }
             }
         });
         {% endfor %}
